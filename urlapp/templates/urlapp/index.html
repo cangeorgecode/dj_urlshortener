@@ -1,0 +1,19 @@
+{% extends 'urlapp/base.html' %}
+{% block content %}
+<div class="container text-center pt-4">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Enter the URL:</label>
+            <input type="text" class="form-control" name="long_url">
+        </div>
+        <button type="submit" class="btn btn-primary">Shorten</button>
+    </form>
+</div>
+
+<div class="container text-center pt-2">
+    {% if request.GET.short_url %}
+        Your URL is: <a href="{{ request.GET.short_url }}">{{ request.GET.short_url }}</a>
+    {% endif %}
+</div>
+{% endblock content %}
